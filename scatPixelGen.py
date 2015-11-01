@@ -29,7 +29,7 @@ def gen(fn):
     print 'size=', img.size
     for ix in xrange(w):
         for iy in xrange(h):
-            pos = (ix-hw, w-1-iy-hh)
+            pos = (ix-hw, h-1-iy-hh)
             r,g,b,a = img.getpixel((ix,iy))
             if  a > ALPHA_THREHOLD:
                 node = {}
@@ -40,7 +40,7 @@ def gen(fn):
                 node['b'] = b
                 jobj["data"].append(node)
             
-    print jobj
+#     print jobj
     f = open(fn+'.sopx','w')
     f.write(json.dumps(jobj))
     f.close()
