@@ -45,8 +45,8 @@ def gen(fn):
                 node['r'] = r
                 node['g'] = g
                 node['b'] = b
-                node['T'] = isExist(img, ix, iy+1)
-                node['B'] = isExist(img, ix, iy-1)
+                node['T'] = isExist(img, ix, iy-1)
+                node['B'] = isExist(img, ix, iy+1)
                 node['L'] = isExist(img, ix-1, iy)
                 node['R'] = isExist(img, ix+1, iy)
                 jobj["data"].append(node)
