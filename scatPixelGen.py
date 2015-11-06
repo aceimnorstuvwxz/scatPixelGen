@@ -18,6 +18,13 @@ import time
 
 ALPHA_THREHOLD = 50
 
+def isExist(img, x, y):
+    if (x >= 0 and x < img.size[0] and y >= 0 and y < img.size[1]):
+        r,g,b,a = img.getpixel((x,y))
+        if (a > ALPHA_THREHOLD):
+            return 1
+    return 0
+
 def gen(fn):
     img = Image.open(fn)
     w,h = img.size
@@ -38,6 +45,10 @@ def gen(fn):
                 node['r'] = r
                 node['g'] = g
                 node['b'] = b
+                node['T'] = isExist(img, ix, iy+1)
+                node['B'] = isExist(img, ix, iy-1)
+                node['L'] = isExist(img, ix-1, iy)
+                node['R'] = isExist(img, ix+1, iy)
                 jobj["data"].append(node)
             
 #     print jobj
