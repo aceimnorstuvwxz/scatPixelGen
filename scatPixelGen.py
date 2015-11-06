@@ -16,7 +16,7 @@ import time
 255整型
 '''
 
-ALPHA_THREHOLD = 50
+ALPHA_THREHOLD = 5
 
 def isExist(img, x, y):
     if (x >= 0 and x < img.size[0] and y >= 0 and y < img.size[1]):
@@ -45,6 +45,7 @@ def gen(fn):
                 node['r'] = r
                 node['g'] = g
                 node['b'] = b
+                node['a'] = a
                 node['T'] = isExist(img, ix, iy-1)
                 node['B'] = isExist(img, ix, iy+1)
                 node['L'] = isExist(img, ix-1, iy)
