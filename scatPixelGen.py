@@ -60,6 +60,8 @@ def gen(fn):
 if __name__ == "__main__":
     if len(sys.argv) == 2:
         fn = sys.argv[1]
+        if fn[-1:] == 'p':
+            fn = fn + "ng"
         gen(fn)
     else:
         print "png file as parameter..."
