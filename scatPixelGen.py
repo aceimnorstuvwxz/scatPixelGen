@@ -32,8 +32,8 @@ def gen(fn):
     hh = int(h/2)
     jobj = {}
     jobj["data"] = []
-    
-    print 'size=', img.size
+
+    #print 'size=', img.size
     for ix in xrange(w):
         for iy in xrange(h):
             pos = (ix-hw, h-1-iy-hh)
@@ -51,7 +51,7 @@ def gen(fn):
                 node['L'] = isExist(img, ix-1, iy)
                 node['R'] = isExist(img, ix+1, iy)
                 jobj["data"].append(node)
-            
+
 #     print jobj
     f = open(fn+'.sopx','w')
     f.write(json.dumps(jobj))
@@ -62,6 +62,7 @@ if __name__ == "__main__":
         fn = sys.argv[1]
         if fn[-1:] == 'p':
             fn = fn + "ng"
+        print fn
         gen(fn)
     else:
         print "png file as parameter..."
