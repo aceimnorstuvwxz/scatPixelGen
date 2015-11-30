@@ -17,6 +17,12 @@ import math
 layerput 画板.png  x0,y0 贴图.png    x1,y1,w,h  输出.png
 在画板的 x0,y0位置贴上 贴图中的 x1,y1,w,h 定义的一部分。  
 '''
+
+def mixColor(a, b):
+    ra = 1.0 - b[3]/256.0
+    rb = b[3]/256.0
+    return (int(a[0]*ra+b[0]*rb), int(a[1]*ra+b[1]*rb), int(a[2]*ra+b[2]*rb), int(min(255, a[3]+b[3])))
+
 def layerput(fn_board, x0, y0, fn_texture, x1, y1, w, h, fn_out):
     img_board = Image.open(fn_board)
     img_texture = Image.open(fn_texture)
@@ -24,8 +30,7 @@ def layerput(fn_board, x0, y0, fn_texture, x1, y1, w, h, fn_out):
 
     for xx in xrange(w):
         for yy in xrange(h):
-            draw.point((x0+xx, y0+yy), img_texture.getpixel((x1+xx,y1+yy)))
-    
+            draw.point((x0+xx, y0+yy), mixColor(img_board.getpixel((x0+xx, y0+yy)), img_texture.getpixel((x1+xx,y1+yy))))
     img_board.save(fn_out, 'PNG')
     
 if __name__ == "__main__":
