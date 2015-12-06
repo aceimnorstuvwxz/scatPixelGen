@@ -12,6 +12,9 @@ import json
 import random
 import time
 
+'''
+问题，能够分解出系列的 PNG，但是这个 PNG 在 PS 中不是普通的 PNG 图片，而是一个索引图层。
+'''
 
 def gen(fn):
     img = Image.open(fn)
