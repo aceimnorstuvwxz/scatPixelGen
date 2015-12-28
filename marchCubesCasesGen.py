@@ -24,10 +24,24 @@ def gen():
             if num != ",":
                 print num, ",",
         print ""
-    pass
+    textfile.close()
+
+def gen2():
+    textfile = open("marchCubeNumPolyData.txt", "r")
+    lines = textfile.readlines();
+#     print lines
+    for line in lines:
+#         print line
+        numbers = line.split()
+        for num in numbers:
+            if num != "," and num != "0":
+                print num, ",",
+        print ""
+    textfile.close()
     
 if __name__ == "__main__":
     if len(sys.argv) == 1:
-        gen();
+        #gen();
+        gen2();
     else:
         print "imgcutout xxx.png x0 x1 y0 y1"
